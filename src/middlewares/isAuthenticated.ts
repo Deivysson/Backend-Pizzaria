@@ -26,6 +26,9 @@ export function isAuthenticated(
             process.env.JWT_SECRET
         ) as PayLoad;
 
+        //recuperar o id do token e colocar na variavel user_id dentro do req. //Configurar no tsconfig.json.
+        req.user_id = sub;
+
         return next();
     }catch(err){
         return res.status(401).end();

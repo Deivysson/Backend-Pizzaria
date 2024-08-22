@@ -30,6 +30,7 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle)
 //Rotas Product
 
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
+router.get('category//product', isAuthenticated, new ListCategoryController().handle)
 
 
 export { router };

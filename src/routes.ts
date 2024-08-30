@@ -11,6 +11,9 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { CreateProductController } from "./controllers/product/CreateProductController";
 
 import uploadConfig from './config/multer'
+import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
+import { RemoveOrderController } from "./controllers/order/RemoveOrderController";
 
 const router = Router();
 
@@ -23,14 +26,15 @@ router.post ('/session', new AuthUserController().handle)
 router.get ('/me', isAuthenticated, new DetailUserController().handle)
 
 //Routas categories
-
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
 router.get('/category', isAuthenticated, new ListCategoryController().handle)
 
 //Rotas Product
-
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)
-router.get('category//product', isAuthenticated, new ListCategoryController().handle)
+router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
 
+//Rotas Order
+router.post('/order', isAuthenticated, new CreateOrderController().handle)
+router.get('/order', isAuthenticated, new RemoveOrderController().handle)
 
 export { router };

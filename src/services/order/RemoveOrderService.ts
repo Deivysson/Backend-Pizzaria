@@ -9,7 +9,7 @@ class RemoveOrderService{
 
         const order = await prismaClient.order.delete({
             where:{
-                id: order_id
+                id: order_id,
             }
         })
 
